@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1 id="title">Js Sandbox</h1>
+<button id="btn">Toggle Color</button>
+
+<h2>Time Left: <span id="time"></span></h2>
+<button id="start">Start</button>
+
+
+<script>
+    let pos = 0;
+  const title=document.getElementById("title");
+  const btn=document.getElementById("btn");
+
+  
+ 
+  btn.onclick=function(){
+    if(pos == 0){
+    title.style.color ="red";
+    title.style.float ="right";
+// pos = 1;
+    }
+    else if(pos == 1){
+        title.style.color ="green";
+    title.style.float ="left";
+        // pos = 0;
+    }
+
+    pos =! pos;
+  }
+
+
+    const time = document.getElementById("time"); //The const time is a variable name
+  const start =  document.getElementById("start");
+  
+  let count = 60;
+  time.innerHTML = count;
+start.onclick = function(){
+    start.setAttribute("disabled", true) // This is used to disable the start button using the setAttribute function
+   let interval =  setInterval(() => {
+        count = count-1;
+        time.innerHTML = count;
+        if(count == 55){
+            count = 0; //used to return to the default count digit
+            clearInterval(interval);
+           alert("time up");
+           
+time.innerHTML = count; //
+//start.removeAttribute("disabled")
+        }
+    }, 1000);
+
+
+     
+    
+}
+
+</script>
+
+
+<!--Read translate and rotate in CSS-->
+</body>
+</html>

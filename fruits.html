@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions Bank</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Total Search Results:<span id="result"></span></h1>
+        <input id="searchInput" placeholder="Search">
+
+
+    </div>
+<ul id="lists">
+
+
+</ul>
+
+
+    <script>
+
+
+
+let fruits = ["apple",  "mango", "orange", "pawpaw", "pineaple", "banana"]
+
+let searchInput = document.getElementById("searchInput");
+
+let ul = document.getElementById("lists");
+ 
+display(fruits)
+
+//ul.innerHTML = fruits;
+
+// fruits.forEach((fruit) => {
+    //or use function(fruit)
+//   let li = document.createElement("li")
+//   li.innerHTML = fruit;
+//   ul.appendChild(li);
+
+
+// })
+
+
+
+
+
+
+
+searchInput.onkeyup = function(e){
+    let val = searchInput.value.toLowerCase();
+    let filteredfruits = fruits.filter(function(fruit){
+if(fruit.includes(val)){
+   return true;
+}
+
+    })
+   // fruits.filter(function(fruit){
+// console.log(e);
+    // })
+
+ul.innerHTML = ""
+display(filteredfruits);
+
+}
+
+
+function display(fruitToDisplay){
+    document.getElementById("result").innerHTML = fruitToDisplay.length;
+    fruitToDisplay.forEach(function(fruit){
+        let li = document.createElement("li")
+        li.innerHTML = fruit;
+        ul.appendChild(li);
+    }
+
+
+) //callback function
+}
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo app</title>
+</head>
+
+<body>
+    <div>
+        <h2>todo list</h2>
+        <input id="name" type="text" placeholder="name">
+        <input id="desc" type="text" placeholder="description">
+        <button id="add">add todo</button>
+        <ol id="list">
+
+        </ol>
+
+        <!--<button id="edit">edit todo</button>
+        <button id="delete">delete todo</button>-->
+    </div>
+
+
+    <script>
+        let name = document.getElementById("name");
+        let desc = document.getElementById("desc");
+        let add = document.getElementById("add");
+        let ol = document.getElementById("list");
+        //let edit = document.getElementById("edit");
+        // let del = document.getElementById("delete");
+        //localStorage.removeItem("todoList")
+        let todoItems = localStorage.getItem("todoList") || []; // first empty
+        console.log(todoItems)
+
+        add.onclick = function () {
+            let nameEntry = name.value;
+            let descEntry = desc.value;
+            let todo = { name: nameEntry, desc: descEntry }
+            todoItems.push(todo) // |test|
+            localStorage.setItem("todoList", todoItems)
+
+            display()
+        }
+
+        function display() {
+            ol.innerHTML = ""
+            for (let i = 0; i < todoItems.length; i++) {
+                let li = document.createElement("li")
+                li.innerHTML = `[${i + 1} ${todoItems[i].name}] [${todoItems[i].desc}]`;
+                ol.append(li)
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

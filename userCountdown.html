@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="userCountdown.css"> -->
+</head>
+<body>
+   
+<h2>Your <span id="nameDisplay"></span> starts in <span id="countDispalay"></span></h2>
+    <input type="text" id="eventName" placeholder="Enter Event">
+    <input type="date" id="eventDate">
+    <button type="submit" id="eventCount">Start CountDown</button>
+     <button  id="eventData">Submit</button>
+   
+    
+
+    <script>
+        let eventName = document.getElementById("eventName");
+        let nameDisplay = document.getElementById("nameDisplay");
+        let countDisplay = document.getElementById("countDisplay").innerHTML = Date();
+        let form = document.getElementById("eventData");
+
+
+    //    form.onclick =  function (e) {
+    //      let val = eventName.value
+    //      nameDisplay.innerHTML = val;
+    //     // let info = document.getElementById("countDisplay").innerHTML=Date();
+            
+    //     }
+
+// let nameDisplay = document.getElementById("nameDisplay");
+
+// let val = eventName.value;
+
+
+
+
+    </script>
+</body>
+</html>

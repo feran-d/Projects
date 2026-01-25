@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simple JS Stopwatch (Start/Pause Toggle)</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; height: 100dvh; display: grid; place-items: center;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: #f6f7fb;
+    }
+    .card {
+      background: white; padding: 24px; border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.08); width: 320px; text-align: center;
+    }
+    .time {
+      font-variant-numeric: tabular-nums;
+      font-size: 48px; font-weight: 700; letter-spacing: .5px; margin: 6px 0 16px;
+    }
+    .hint { color: #6b7280; font-size: 12px; margin-bottom: 8px; }
+    .row { display: flex; gap: 10px; justify-content: center; }
+    button {
+      flex: 1; padding: 12px 14px; border: 0; border-radius: 12px; cursor: pointer;
+      font-weight: 600; transition: transform .05s ease;
+    }
+    button:active { transform: translateY(1px); }
+    #toggleBtn { background: #111827; color: white; }
+    #resetBtn { background: #e5e7eb; color: #111827; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="hint">Stopwatch</div>
+    <div id="display" class="time">00:00.00</div>
+    <div class="row">
+      <button id="toggleBtn">Start</button>
+      <button id="resetBtn">Reset</button>
+    </div>
+  </div>
+
+  <script>
+    // Grab things from the page
+    const display   = document.getElementById('display');
+    const toggleBtn = document.getElementById('toggleBtn');
+    const resetBtn  = document.getElementById('resetBtn');
+
+    // These variables are our "memory"
+    let startTime   = 0;   // when the current run started (in ms)
+    let elapsedTime = 0;   // total time we've already counted (in ms)
+    let intervalId  = null; // the repeating timer id (null means not running)
+
+    // Format milliseconds -> "MM:SS.HH" (H = hundredths)
+    function formatTime(ms) {
+      const minutes    = Math.floor(ms / 60000);
+      const seconds    = Math.floor((ms % 60000) / 1000);
+      const hundredths = Math.floor((ms % 1000) / 10);
+      const mm = String(minutes).padStart(2, '0');
+      const ss = String(seconds).padStart(2, '0');
+      const hh = String(hundredths).padStart(2, '0');
+      return `${mm}:${ss}.${hh}`;
+    }
+
+    // Start/resume the stopwatch
+    function start() {
+      // If we had time counted already, continue from there:
+      // set startTime to "now minus what we already counted".
+      startTime = Date.now() - elapsedTime;
+
+      // Update the display every 10 ms (0.01s)
+      intervalId = setInterval(() => {
+        const now = Date.now();
+        const diff = now - startTime;      // how long since we (re)started
+        display.textContent = formatTime(diff);
+      }, 10);
+
+      toggleBtn.textContent = 'Pause';
+    }
+
+    // Pause the stopwatch
+    function pause() {
+      clearInterval(intervalId);  // stop updating
+      intervalId = null;
+      // Save how much time had passed so far, so we can continue later
+      elapsedTime = Date.now() - startTime;
+      toggleBtn.textContent = 'Start';
+    }
+
+    // Reset to zero
+    function reset() {
+      pause(); // make sure it's not running
+      elapsedTime = 0;
+      display.textContent = '00:00.00';
+    }
+
+    // One button that toggles between Start and Pause
+    toggleBtn.addEventListener('click', () => {
+      if (intervalId) {
+        // It's running right now
+        pause();
+      } else {
+        // It's paused right now
+        start();
+      }
+    });
+
+    resetBtn.addEventListener('click', reset);
+  </script>
+</body>
+</html>

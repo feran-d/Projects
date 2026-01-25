@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<input id="input1"><br>
+<input id="input2"><br>
+<h2 id="output">0</h2>
+
+
+
+<button id="add">+</button>
+<button id="sub">-</button>
+<button id="multi">*</button>
+<button id="div">/</button>
+
+
+
+
+
+<input1>
+<input2>
+
+<script>
+    
+let num1 = document.getElementById("input1");
+
+let num2 = document.getElementById("input2");
+ 
+let output = document.getElementById("output");
+
+
+const btn1 = document.getElementById("add");
+const btn2 = document.getElementById("sub");
+const btn3 = document.getElementById("multi");
+const btn4 = document.getElementById("div");
+
+btn1.onclick = function(){
+    
+    output.innerHTML = +num1.value + +num2.value;
+}
+
+
+btn2.onclick = function(){
+    
+    output.innerHTML = num1.value - num2.value;
+}
+
+btn3.onclick = function(){
+    
+    output.innerHTML = num1.value * num2.value;
+}
+
+btn4.onclick = function(){
+    
+    output.innerHTML = num1.value / num2.value;
+}
+
+
+
+// This is used to change the color of the input using the getelement by tag name.
+let input1 = document.getElementsByTagName("input")[0];
+let input2 = document.getElementsByTagName("input")[1];
+
+input1.style.backgroundColor = "yellow";
+input2.style.backgroundColor = "green";
+
+
+
+input1.onkeypress = function(){
+    input2.value = input1.value;
+}
+
+
+
+
+</script>
+
+
+
+</body>
+</html>

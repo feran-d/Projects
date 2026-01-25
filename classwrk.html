@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+    <div id="box" style="height: 50px; width: 50px; margin-bottom: 10px;">Box</div>
+    <button id="button">Move</button>
+-->
+
+
+
+<div>Count:<span id="count">0</span></div>
+<button id="increase">+1</button>       
+<button id="decrease">-1</button><br><br>       
+
+
+
+
+
+
+    <script>
+let cnt = 0;
+const count = document.getElementById("count");
+const btn1 = document.getElementById("increase");
+const btn2 = document.getElementById("decrease");
+
+btn1.onclick = function(){
+cnt = cnt+1;
+count.innerHTML = cnt;
+}
+
+btn2.onclick = function(){
+
+if(cnt != 0){
+    cnt = cnt-1;
+    count.innerHTML = cnt;
+}
+    
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+let color = "green";
+const box = document.getElementById("box");
+const btn = document.getElementById("button");
+ box.style.backgroundColor= color;
+
+btn.onclick = function(){
+    if(color == green){
+color = green;
+}else{
+    color = red;
+}
+    box.style.backgroundColor = color;
+    box.style.translate = "20px";
+}
+*/
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

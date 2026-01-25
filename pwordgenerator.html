@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passsword Generator</title>
+</head>
+<body>
+     <h2>Password generator</h2>
+    <p>Your password is: <span id="result"></span></p>
+<input id="number" placeholder="Input your password length"><br><br>
+<button id="submit">Enter</button> 
+   
+<script>
+ 
+ 
+const result = document.getElementById("result");
+const input = document.getElementById("number");
+const submit = document.getElementById("submit");
+ 
+   
+
+
+submit.onclick = function(){
+
+    let val = input.value;
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:,.<>?";
+
+outcome = "";
+if(val < 20){
+for (let i = 0; i < val; i++){
+outcome += letters.charAt(Math.floor(Math.random() * letters.length));
+
+result.innerHTML = outcome;
+
+}
+
+}
+
+}
+ 
+
+</script>
+
+
+
+
+
+</body>
+</html>

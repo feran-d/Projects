@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+</head>
+<body>
+
+<h2>Stop Watch:<span id="watch"></span></h2>
+
+
+<button id="start">Start</button>
+ <button id="pause">Pause</button>
+<button id="stop">Stop</button>
+
+
+
+
+   <script>
+const watch = document.getElementById("watch");
+
+const start = document.getElementById("start");
+
+
+const pause = document.getElementById("pause");
+
+const stop = document.getElementById("stop");
+
+
+let count = 0;
+watch.innerHTML = count;
+
+start.onclick = function(){
+   // start.setAttribute("enabled", true)
+    let timer = setInterval(() => {
+       count = count+1;
+watch.innerHTML = count; 
+
+
+
+pause.onclick= function(){
+    clearInterval(timer);
+}
+    // if(start){
+        //  document.getElementById("start").innerText = "Pause";
+    // }
+//  start.onclick = function(){
+//   if(start){
+    // document.getElementById("start").innerHTML = "Start";
+    // clearInterval(timer);
+//  }
+//  } 
+//   start.onclick = function(){
+    // setInterval(timer)
+    // count = count + 1;
+// }
+
+
+stop.onclick = function(){
+if(stop){
+    count = 0;
+    clearInterval(timer);
+    watch.innerHTML = count;
+    //stop.removeAttribute("disabled", false);
+}
+}
+
+    }, 10);
+
+
+   
+}
+
+
+
+
+
+
+
+   </script> 
+</body>
+</html>

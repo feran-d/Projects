@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions Bank</title>
+</head>
+<body>
+    <h1>JS Object Practice</h1>
+    <p><span id="question">Welcome to exam portal</span></p>
+    <button id="prev">Previous</button>
+    <button id="next">Next</button>
+    
+ 
+<script>
+
+let ques = document.getElementById("question");
+ const next = document.getElementById("next");
+ const prev = document.getElementById("prev");
+
+
+
+
+ const questions = [
+ "What is Cost Accounting?",
+ "What is Manufacturing Account?",
+  "What is Quantum Physics?",
+ "Expatiate the concept called: Momentum?"
+
+];
+
+
+
+let num = questions;
+//  while(num){
+next.onclick = function(){
+   ques.innerHTML = num.length[0]++;
+}
+ 
+
+prev.onclick = function(){
+    ques.innerHTML = num.length[-1]--;
+}
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

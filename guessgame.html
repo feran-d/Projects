@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Result:<span id="result"></span></p>
+    <input id="number" placeholder="Guess the number">
+    <button id="submit">Enter</button>
+
+
+
+
+    <script>
+        let outcome = document.getElementById("result");
+const num = document.getElementById("number");
+const submit = document.getElementById("submit");
+let count = 0;
+let guess = Math.floor((Math.random() *10) + 1);
+
+submit.onclick = function(){
+
+if(count == 4){
+    alert("Trial exceeded: " + "number is " + guess);
+    submit.setAttribute("disabled", true)
+    return;
+
+}
+
+
+
+    let guessnum = num.value;
+    if(guessnum == guess){
+        outcome.innerHTML = "You guessed right";
+        // let guessnum = 0;
+    }else if(guessnum < guess){
+        outcome.innerHTML = "You number is too small";
+    }else{
+        outcome.innerHTML = "You number is too large";
+    }
+    
+    count++;
+}
+
+
+
+
+
+    </script>
+</body>
+</html>

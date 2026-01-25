@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+
+<body>
+
+
+<input id="display">
+
+
+
+<button value="ple" id="btn1">Apple</button>
+<button value="Banana" onclick="sowValue(this.value)">Banana</button>
+
+<script>
+
+     let btn1 = document.getElementById("btn1")
+      
+
+function sowValue(va){
+
+    btn1.onclick = sowValue(this.value)
+    document.getElementById("display").value = va;
+    
+}
+
+
+
+</script>
+
+
+
+</body>
+
+
+
+
+
+
+
+
+
+</html>
