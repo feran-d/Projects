@@ -7,40 +7,164 @@
 </head>
 <body>
     <h1>JS Object Practice</h1>
-    <p><span id="question">Welcome to exam portal</span></p>
+    <p id="question"></p>
+    <div id="options">
+    </div>
     <button id="prev">Previous</button>
     <button id="next">Next</button>
     
  
 <script>
-
-let ques = document.getElementById("question");
- const next = document.getElementById("next");
- const prev = document.getElementById("prev");
-
-
-
-
  const questions = [
- "What is Cost Accounting?",
- "What is Manufacturing Account?",
-  "What is Quantum Physics?",
- "Expatiate the concept called: Momentum?"
+    {
+        question: "What is Cost Accounting?",
+        options: [
+        "Recording daily expenses",
+        "Tracking production cost",
+        "Bank reconciliation",
+        "Marketing analysis"
+    ],
+        answer: "Cost Accounting"
+    },
 
+    {
+        question: "What is Manufacturing Account?",
+        options: [
+            "Manufacturing Account", 
+        "Trading Account",
+         "Profit and Loss Account",
+          "Balance Sheet"
+        ],
+        answer: "Manufacturing Account"
+    },
+
+    {
+        question: "What is Quantum Physics?",
+        options: ["Quantum Physics", "Classical Physics", "Relativity", "Thermodynamics"],
+        answer: "Quantum Physics"
+    },
+    {
+        question: "Expatiate the concept called: Momentum?",
+        options: ["Momentum", "Inertia", "Force", "Energy"],
+        answer: "Momentum"
+    },
+    {
+        question: "Clarify the term Morphology?",
+        options: ["Morphology", "Anatomy", "Physiology", "Ecology"],
+        answer: "Morphology"
+    },
+    {
+        question: "Define Financial Accounting?",
+        options: ["Financial Accounting", "Cost Accounting", "Management Accounting", "Tax Accounting"],
+        answer: "Financial Accounting"
+    },
+    {
+        question: "Explain the concept Entrepreneurship?",
+        options: ["Entrepreneurship", "Management", "Marketing", "Finance"],
+        answer: "Entrepreneurship"
+    },
+    {
+        question: "What is Industrial Extension?",
+        options: ["Industrial Extension", "Industrial Revolution", "Industrialization", "Industrial Policy"],
+        answer: "Industrial Extension"
+    },
+    {
+        question: "What is Biology?",
+        options: ["Biology", "Chemistry", "Physics", "Mathematics"],
+        answer: "Biology"
+    },
+    {
+        question: "What is Physics?",
+        options: ["Physics", "Chemistry", "Biology", "Mathematics"],
+        answer: "Physics"
+    }
 ];
 
 
+const quesText = document.getElementById("question");
+const optionText = document.getElementById("options");
+const next = document.getElementById("next");
+const prev = document.getElementById("prev");
 
-let num = questions;
-//  while(num){
-next.onclick = function(){
-   ques.innerHTML = num.length[0]++;
+let currentIndex = 0;
+
+function loadQuestion() {
+  const currentQuestion = questions[currentIndex];
+
+  quesText.innerHTML = currentQuestion.question;
+
+  optionText.innerHTML = "";
+
+  currentQuestion.options.forEach(function(option) {
+    const btn = document.createElement("p");
+    btn.innerHTML = option;
+    optionText.appendChild(btn);
+  });
 }
- 
+
+loadQuestion();
+
+
+
+// let numIndex = 0;
+
+// function displayQuestion(){
+//     quesText.innerHTML = questions[numIndex].question;
+//     optionText.innerHTML = "";
+    // for(let i = 0; i < questions[numIndex].options.length; i++){
+    //     // const option = document.createElement("p");
+    //     option.innerHTML = questions[numIndex].options[i];
+    //     optionText.appendChild(option);
+    // }
+// }
+//  displayQuestion();
+
+ next.onclick = function(){
+    if(currentIndex < questions.length - 1){
+     currentIndex++;
+     loadQuestion();
+    }
+ }
+
+
 
 prev.onclick = function(){
-    ques.innerHTML = num.length[-1]--;
+ if(currentIndex > 0){
+    currentIndex--;
+    loadQuestion();
+ } 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// let numIndex = 0;
+// ques.innerHTML = questions[numIndex];
+
+// next.onclick = function(){
+//    if(numIndex < questions.length - 1){
+//     numIndex++;
+//     ques.innerHTML = questions[numIndex];
+//    }
+// }
+ 
+
+// prev.onclick = function(){
+//  if(numIndex > 0){
+//     numIndex--;
+//     ques.innerHTML = questions[numIndex];
+//  } 
+// }
 
 
 
