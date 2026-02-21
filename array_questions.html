@@ -86,52 +86,36 @@ const optionText = document.getElementById("options");
 const next = document.getElementById("next");
 const prev = document.getElementById("prev");
 
-let currentIndex = 0;
 
-function loadQuestion() {
-  const currentQuestion = questions[currentIndex];
 
-  quesText.innerHTML = currentQuestion.question;
 
-  optionText.innerHTML = "";
 
-  currentQuestion.options.forEach(function(option) {
-    const btn = document.createElement("p");
-    btn.innerHTML = option;
-    optionText.appendChild(btn);
-  });
+let numIndex = 0;
+
+function displayQuestion(){
+    quesText.innerHTML = questions[numIndex].question;
+    optionText.innerHTML = "";
+    for(let i = 0; i < questions[numIndex].options.length; i++){
+        const option = document.createElement("p");
+        option.innerHTML = questions[numIndex].options[i];
+        optionText.appendChild(option);
+    }
 }
-
-loadQuestion();
-
-
-
-// let numIndex = 0;
-
-// function displayQuestion(){
-//     quesText.innerHTML = questions[numIndex].question;
-//     optionText.innerHTML = "";
-    // for(let i = 0; i < questions[numIndex].options.length; i++){
-    //     // const option = document.createElement("p");
-    //     option.innerHTML = questions[numIndex].options[i];
-    //     optionText.appendChild(option);
-    // }
-// }
-//  displayQuestion();
+ displayQuestion();
 
  next.onclick = function(){
-    if(currentIndex < questions.length - 1){
-     currentIndex++;
-     loadQuestion();
+    if(numIndex < questions.length - 1){
+     numIndex++;
+     displayQuestion();
     }
  }
 
 
 
 prev.onclick = function(){
- if(currentIndex > 0){
-    currentIndex--;
-    loadQuestion();
+ if(numIndex > 0){
+    numIndex--;
+    displayQuestion();
  } 
 }
 
@@ -141,12 +125,28 @@ prev.onclick = function(){
 
 
 
+// The code below is basically a function displaying both the questions and the options simultaneously.
+
+// let currentIndex = 0;
+
+// function loadQuestion() {
+//   const currentQuestion = questions[currentIndex];
+
+//   quesText.innerHTML = currentQuestion.question;
+
+//   optionText.innerHTML = "";
+
+//   currentQuestion.options.forEach(function(option) {
+//     const btn = document.createElement("p");
+//     btn.innerHTML = option;
+//     optionText.appendChild(btn);
+//   });
+// }
+
+// loadQuestion();
 
 
-
-
-
-
+//The below code is used when we use array to store the questions.
 
 // let numIndex = 0;
 // ques.innerHTML = questions[numIndex];
