@@ -89,6 +89,17 @@ const prev = document.getElementById("prev");
 
 
 
+// let selectedAnswers = [];
+
+//This line stores the selected options everytime the options are loaded on the user interface
+
+let selectedAnswers = new Array(questions.length).fill(null);
+document.getElementById("options").addEventListener("change", function(e){
+    selectedAnswers[numIndex] = e.target.value;
+});
+
+
+
 
 let numIndex = 0;
 
@@ -96,16 +107,24 @@ function displayQuestion(){
     quesText.innerHTML = questions[numIndex].question;
     optionText.innerHTML = "";
     for(let i = 0; i < questions[numIndex].options.length; i++){
-        const option = document.createElement("p");
-        option.innerHTML = questions[numIndex].options[i];
-        optionText.appendChild(option);
+        let option = questions[numIndex].options[i];
+        const optionElement = document.createElement("div");
+        optionElement.innerHTML = `<input type="radio" name="option" value="${option}"
+        ${selectedAnswers[numIndex] === option ? "checked": ""}>
+        ${option}`;
+        
+        optionText.appendChild(optionElement);
     }
-    I am feranmi
+    
 }
  displayQuestion();
 
  next.onclick = function(){
     if(numIndex < questions.length - 1){
+        if(selectedAnswers[numIndex] === null){
+            alert("Please select an answer first");
+            return;
+        }
      numIndex++;
      displayQuestion();
     }
