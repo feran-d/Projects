@@ -11,7 +11,7 @@
     <div id="options">
         
     </div>
-    <div id="answers"></div>
+    <div id="answers" style="display: flex;"></div>
     <button id="prev">Previous</button>
     <button id="next">Next</button>
     
@@ -123,11 +123,11 @@ function displayQuestion(){
  displayQuestion();
 
 function displayAnswers(){
-    answerText.innerHTML = questions[numIndex].answer;
-    // answerText.innerHTML = ""
+    // answerText.innerHTML = questions[numIndex].answer;
+    answerText.innerHTML = ""
     for (let i = 0; i < questions[numIndex].answer.length; i++){
-        let answers = questions[numIndex].answer[i];
         const answerElement = document.createElement("p");
+         answerElement.innerHTML = questions[numIndex].answer[i];
         answerText.appendChild(answerElement);
 
     }
@@ -140,8 +140,10 @@ displayAnswers();
             alert("Please select an answer first");
             return;
         }
+        
      numIndex++;
      displayQuestion();
+     displayAnswers();
     }
  }
 
@@ -151,6 +153,7 @@ prev.onclick = function(){
  if(numIndex > 0){
     numIndex--;
     displayQuestion();
+    displayAnswers();
  } 
 }
 
