@@ -9,7 +9,9 @@
     <h1>JS Object Practice</h1>
     <p id="question"></p>
     <div id="options">
+        
     </div>
+    <div id="answers"></div>
     <button id="prev">Previous</button>
     <button id="next">Next</button>
     
@@ -83,6 +85,7 @@
 
 const quesText = document.getElementById("question");
 const optionText = document.getElementById("options");
+const answerText = document.getElementById("answers");
 const next = document.getElementById("next");
 const prev = document.getElementById("prev");
 
@@ -118,6 +121,18 @@ function displayQuestion(){
     
 }
  displayQuestion();
+
+function displayAnswers(){
+    answerText.innerHTML = questions[numIndex].answer;
+    // answerText.innerHTML = ""
+    for (let i = 0; i < questions[numIndex].answer.length; i++){
+        let answers = questions[numIndex].answer[i];
+        const answerElement = document.createElement("p");
+        answerText.appendChild(answerElement);
+
+    }
+}
+displayAnswers();
 
  next.onclick = function(){
     if(numIndex < questions.length - 1){
