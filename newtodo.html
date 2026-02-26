@@ -36,8 +36,9 @@
         add.onclick = function () {
             let nameEntry = name.value;
             let descEntry = desc.value;
-            let todo = { name: nameEntry, desc: descEntry }
-            todoItems.push(todo) // |test|
+            let todo = { name: nameEntry, desc: descEntry};
+            // |test|
+            todoItems.push(todo) 
             localStorage.setItem("todoList", todoItems)
 
             display()
@@ -47,8 +48,8 @@
             ol.innerHTML = ""
             for (let i = 0; i < todoItems.length; i++) {
                 let li = document.createElement("li")
-                li.innerHTML = `[${i + 1} ${todoItems[i].name}] [${todoItems[i].desc}]`;
-                ol.append(li)
+                li.innerHTML = `[${i + 1} ${todoItems[i].name}] [${todoItems[i].desc}];
+                ol.append(li)`
             }
         }
 

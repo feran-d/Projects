@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logic Game</title>
+</head>
+<body>
+    <p>Time Left:<span id="timeText">60</span></p>
+    <button id="startBtn">Start</button>
+    <p>Question:<span id="question"></span></p>
+    <button id="true">True</button>
+    <button id="false">False</button><br><br>
+    <button id="next">Next</button>
+    <button id="prev">Previous</button>
+
+
+
+
+
+
+
+<script>
+let timer = document.getElementById("timeText")
+let startbtn = document.getElementById("startBtn")
+let quesText = document.getElementById("question");
+let truthBtn = document.getElementById("true");
+let falseBtn = document.getElementById("false");
+
+let text = "If jingo passes, then Bongo will study logic";
+
+quesText.innerHTML = text;
+
+let num = 60;
+timer.innerHTML = num;
+
+ startbtn.onclick = function(){
+    
+    // num = num-1;
+
+       
+    
+    
+    startbtn.setAttribute("disabled", true) // This is used to disable the start button using the setAttribute function
+   let interval =  setInterval(() => {
+        num = num-1;
+        timer.innerHTML = num;
+        if(num == 55){
+            num = 0; //used to return to the default count digit
+            clearInterval(interval);
+        //    alert("Game up");
+           setTimeout(() => {
+            location.href = "logic_menu.html";
+           }, 500);
+           
+timer.innerHTML = num; 
+// startbtn.removeAttribute("disabled")
+        }
+    }, 1000);
+
+
+
+ }
+
+truthBtn.onclick = function(){
+    if(true){
+        alert("You got it");
+    }
+}
+
+falseBtn.onclick = function(){
+    if(true){
+        alert("You picked the wrong option");
+    }
+}
+
+</script>
+
+</body>
+</html>
