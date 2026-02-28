@@ -6,13 +6,14 @@
     <title>Logic Game</title>
 </head>
 <body>
-    <p>Time Left:<span id="timeText">60</span></p>
+    <p>Time Left:<span id="timeText"></span></p>
     <button id="startBtn">Start</button>
     <p>Question:<span id="question"></span></p>
     <button id="true">True</button>
     <button id="false">False</button><br><br>
+     <button id="prev">Previous</button>
     <button id="next">Next</button>
-    <button id="prev">Previous</button>
+   
 
 
 
@@ -21,25 +22,52 @@
 
 
 <script>
-let timer = document.getElementById("timeText")
-let startbtn = document.getElementById("startBtn")
+
+const text = [
+    "If jingo passes, then Bongo will study logic",
+     "It is not the case that Bamaanga will pass if and only if he studies",
+     "if ETR students study, then they will not fail"
+];
+
+
+
+
+let timer = document.getElementById("timeText");
+let startbtn = document.getElementById("startBtn");
 let quesText = document.getElementById("question");
 let truthBtn = document.getElementById("true");
 let falseBtn = document.getElementById("false");
+const nextBtn = document.getElementById("next");
+const prevBtn = document.getElementById("prev");
 
-let text = "If jingo passes, then Bongo will study logic";
+// let text = "If jingo passes, then Bongo will study logic";
 
-quesText.innerHTML = text;
+
+let count = 0;
+quesText.innerHTML = text[count];
+ console.log(text.length);
+
+nextBtn.onclick = function(){
+    if(count < text.length - 1){
+        count++;
+    quesText.innerHTML = text[count];
+}
+
+}
+
+
+prevBtn.onclick = function() {
+    if(count > 0)
+    count--;
+quesText.innerHTML = text[count];
+}
+
+
 
 let num = 60;
-timer.innerHTML = num;
+timer.innerHTML =  num;
 
- startbtn.onclick = function(){
-    
-    // num = num-1;
-
-       
-    
+ startbtn.onclick = function(){   
     
     startbtn.setAttribute("disabled", true) // This is used to disable the start button using the setAttribute function
    let interval =  setInterval(() => {
