@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logic Quiz Game</title>
+<style>
+  body {
+   font-family: Arial, sans-serif; text-align: center; margin-top: 50px; color:rgb(184, 129, 29); 
+   }
+  #question {
+   margin-bottom: 20px; font-size: 20px; 
+   }
+  button { 
+  padding: 10px 20px; margin: 5px; font-size: 16px; cursor: pointer; 
+  }
+  #score {
+   margin-top: 20px; font-weight: bold; 
+   }
+</style>
+</head>
+<body>
+
+<h1>Logic Quiz Game</h1>
+<div id="question"></div>
+<button id="trueBtn">Truth</button>
+<button id="falseBtn">False</button>
+<div id="feedback"></div>
+<div id="score"></div>
+
+<script>
+  // 1. Logic statements array
+  const questions = [
+    { 
+        text: "If jingo passes, then Bongo will study logic",
+     answer: true },
+    { 
+        text: "It is not the case that Bamaanga will pass if and only if he studies", answer: false 
+    },
+    {
+         text: "If ETR students study, then they will not fail", answer: true 
+        }
+  ];
+
+  let currentQuestion = 0;
+  let score = 0;
+
+  const questionDiv = document.getElementById("question");
+  const feedbackDiv = document.getElementById("feedback");
+  const scoreDiv = document.getElementById("score");
+  const trueBtn = document.getElementById("trueBtn");
+  const falseBtn = document.getElementById("falseBtn");
+
+  // 2. Display current question
+  function showQuestion() {
+    if (currentQuestion < questions.length) {
+      questionDiv.textContent = questions[currentQuestion].text;
+      feedbackDiv.textContent = "";
+    } else {
+      questionDiv.textContent = "Quiz Finished!";
+      feedbackDiv.textContent = `Your final score is ${score} / ${questions.length}`;
+      trueBtn.style.display = "none";
+      falseBtn.style.display = "none";
+    }
+  }
+
+  // 3. Handle answer
+  function checkAnswer(userAnswer) {
+    const correct = questions[currentQuestion].answer;
+    if (userAnswer === correct) {
+      feedbackDiv.textContent = "✅ Correct!";
+      score++;
+    } else {
+      feedbackDiv.textContent = "❌ Wrong!";
+    }
+    scoreDiv.textContent = `Score: ${score} / ${questions.length}`;
+    currentQuestion++;
+    // Show next question after 1 second
+    setTimeout(showQuestion, 1000);
+  }
+
+  // 4. Button click events
+  trueBtn.addEventListener("click", () => checkAnswer(true));
+  falseBtn.addEventListener("click", () => checkAnswer(false));
+
+  // 5. Start quiz
+  showQuestion();
+</script>
+
+</body>
+</html>
