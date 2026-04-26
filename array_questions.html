@@ -7,6 +7,7 @@
 </head>
 <body>
     <h1>JS Object Practice</h1>
+    <span id="quesCounter">Question 1 of 10</span>
     <p id="question"></p>
     <div id="options"></div>
         
@@ -95,36 +96,7 @@ const next = document.getElementById("next");
 const prev = document.getElementById("prev");
 const submitBtn = document.getElementById("submitBtn");
 const submitMsg = document.getElementById("submitMsg");
-
-
-
-
-
-submitBtn.onclick = function(){
-    let score = 0;
-    let unanswered = 0;
-    for(let i = 0; i < questions.length; i++){
-
-       if(selectedAnswers[i] === null){
-            unanswered++;
-            
-        }
-
-       else if(selectedAnswers[i] === questions[i].answer){
-            score++;
-        }
-    }
-
-
-
-if (unanswered > 0) {
-    submitMsg.innerHTML += ` You have ${unanswered} unanswered question(s). 
-    Please answer all questions before submitting.`;
-}else{
-submitMsg.innerHTML += `Your score is: ${score}/${questions.length}`;
-}
-
-}
+const counterText = document.getElementById("quesCounter");
 
 
 
@@ -140,8 +112,11 @@ document.getElementById("options").addEventListener("change", function(e){
 
 let numIndex = 0;
 
+
 function displayQuestion(){
+    
     quesText.innerHTML = questions[numIndex].question;
+    counterText.innerHTML = `Question ${numIndex + 1} of ${questions.length}`;
     optionText.innerHTML = "";
     for(let i = 0; i < questions[numIndex].options.length; i++){
         let option = questions[numIndex].options[i];
@@ -202,7 +177,41 @@ showBtn.onclick = function(){
         showBtn.innerText = "Hide Answer";
     }
     textVisible = !textVisible;
+
 }
+
+
+submitBtn.onclick = function(){ 
+    let score = 0;
+    let unanswered = 0;
+    for(let i = 0; i < questions.length; i++){
+
+
+        if(selectedAnswers[i] === null){
+            unanswered++;
+            
+        }else if(selectedAnswers[i] === questions[i].answer){
+            score++;
+        }
+
+        
+
+    
+    }
+
+
+
+if (unanswered > 0) {
+    submitMsg.innerHTML = `You skipped ${unanswered} questions.
+     Your score is ${score}/${questions.length}`;
+}
+else{
+submitMsg.innerHTML = `Your score is: ${score}/${questions.length}`;
+
+}
+
+}
+
 
 
 </script>
