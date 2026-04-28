@@ -4,24 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Questions Bank</title>
+    <link rel="stylesheet" href="array_questions.css">
 </head>
 <body>
+
+    <div class="quiz-container">
     <h1>JS Object Practice</h1>
-    <span id="quesCounter">Question 1 of 10</span>
-    <p id="question"></p>
+
+
+    
+
+    <div id="quesCounter"></div>
+    <h2 id="question"></h2>
     <div id="options"></div>
         
-    </div>
+    
     <div id="answers" style="display:none;"></div>
-    <p id="submitMsg"></p>
 
+
+
+    
+    <div class="buttons">
     <button id="showAns">Show Answer</button>
     <button id="prev">Previous</button>
     <button id="next">Next</button>
     <button id="submitBtn">Submit</button>
-    
+
+    <div class="progress-bar">
+    <div id="progress"></div>
+</div>
+
+</div>
+
+<div id="submitMsg"></div>
+
+    </div>
  
 <script>
+
+
+
+
+
+
  const questions = [
     {
         question: "What is Cost Accounting?",
@@ -126,12 +151,24 @@ function displayQuestion(){
         ${option}`;
         
         optionText.appendChild(optionElement);
-    }
-    
+    }   
+
+    //     if(numIndex === questions.length - 1){
+    //     next.style.display = "none";
+    //     submitBtn.style.display = "block";
+    // } else {
+    //     next.style.display = "block";
+    //     submitBtn.style.display = "none";
+    // }
+
+    let progressPercent = ((numIndex + 1) / questions.length) * 100;
+progress.style.width = progressPercent + "%";
 }
  displayQuestion();
 
-
+//Question: Understanding the link between the progress bar, and the class highlight with the button on 
+//chatgpt
+//Also, studying the code and understanding it, then moving on to the bigger face of the real CBT.
 
 
 
